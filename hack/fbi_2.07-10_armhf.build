@@ -1,0 +1,102 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc -i -b
+dpkg-buildpackage: source package fbi
+dpkg-buildpackage: source version 2.07-10
+dpkg-buildpackage: source changed by Moritz Muehlenhoff <jmm@debian.org>
+ dpkg-source -i --before-build fbi-2.07
+dpkg-buildpackage: host architecture armhf
+ fakeroot debian/rules clean
+rm -rf build-stamp fbi thumbnail.cgi exiftran
+dh_clean
+/usr/bin/make clean
+make[1]: Entering directory `/mnt/misc/rasberry/hack/fbi-2.07'
+rm -f *.o jpeg/*.o rd/*.o wr/*.o mk/*.dep core core.*
+make[1]: Leaving directory `/mnt/misc/rasberry/hack/fbi-2.07'
+ debian/rules build
+/usr/bin/make -C . prefix=/usr
+make[1]: Entering directory `/mnt/misc/rasberry/hack/fbi-2.07'
+  CC	  exiftran.o
+  CC	  genthumbnail.o
+  CC	  jpegtools.o
+  CC	  jpeg/transupp.o
+  CC	  filter.o
+  CC	  op.o
+  CC	  readers.o
+  CC	  rd/read-jpeg.o
+  LD	  exiftran
+  CC	  thumbnail.cgi.o
+  LD	  thumbnail.cgi
+  CC	  fbi.o
+fbi.c: In function ‘read_image’:
+fbi.c:654:10: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+  CC	  fbtools.o
+fbtools.c: In function ‘fb_setvt’:
+fbtools.c:261:10: warning: ignoring return value of ‘chown’, declared with attribute warn_unused_result [-Wunused-result]
+fbtools.c:281:8: warning: ignoring return value of ‘dup’, declared with attribute warn_unused_result [-Wunused-result]
+fbtools.c:282:8: warning: ignoring return value of ‘dup’, declared with attribute warn_unused_result [-Wunused-result]
+fbtools.c: In function ‘fb_switch_signal’:
+fbtools.c:98:11: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
+fbtools.c:104:11: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
+fbtools.c: In function ‘fb_switch_acquire’:
+fbtools.c:123:7: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
+fbtools.c: In function ‘fb_switch_release’:
+fbtools.c:114:7: warning: ignoring return value of ‘write’, declared with attribute warn_unused_result [-Wunused-result]
+  CC	  fb-gui.o
+fb-gui.c: In function ‘shadow_draw_string’:
+fb-gui.c:490:28: warning: variable ‘scalable’ set but not used [-Wunused-but-set-variable]
+  CC	  desktop.o
+  CC	  parseconfig.o
+  CC	  fbiconfig.o
+  CC	  dither.o
+  CC	  rd/read-gif.o
+  CC	  rd/read-png.o
+  CC	  rd/read-tiff.o
+  CC	  curl.o
+curl.c: In function ‘curl_setup’:
+curl.c:144:5: warning: call to ‘_curl_easy_setopt_err_write_callback’ declared with attribute warning: curl_easy_setopt expects a curl_write_callback argument for this option [enabled by default]
+  CC	  rd/read-ppm.o
+rd/read-ppm.c: In function ‘ppm_read’:
+rd/read-ppm.c:57:10: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+rd/read-ppm.c: In function ‘pnm_init’:
+rd/read-ppm.c:29:10: warning: ignoring return value of ‘fgets’, declared with attribute warn_unused_result [-Wunused-result]
+rd/read-ppm.c:31:10: warning: ignoring return value of ‘fgets’, declared with attribute warn_unused_result [-Wunused-result]
+rd/read-ppm.c:33:7: warning: ignoring return value of ‘fgets’, declared with attribute warn_unused_result [-Wunused-result]
+rd/read-ppm.c:36:7: warning: ignoring return value of ‘fgets’, declared with attribute warn_unused_result [-Wunused-result]
+rd/read-ppm.c: In function ‘pbm_read’:
+rd/read-ppm.c:85:10: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+rd/read-ppm.c: In function ‘pgm_read’:
+rd/read-ppm.c:67:10: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+  CC	  rd/read-bmp.o
+rd/read-bmp.c: In function ‘bmp_init’:
+rd/read-bmp.c:75:10: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+rd/read-bmp.c:123:7: warning: ignoring return value of ‘fread’, declared with attribute warn_unused_result [-Wunused-result]
+  LD	  fbi
+make[1]: Leaving directory `/mnt/misc/rasberry/hack/fbi-2.07'
+touch build-stamp
+ fakeroot debian/rules binary
+make: Warning: File `build-stamp' has modification time 63 s in the future
+/usr/bin/make -C . install DESTDIR=/mnt/misc/rasberry/hack/fbi-2.07/debian/tmp prefix=/usr
+make[1]: Entering directory `/mnt/misc/rasberry/hack/fbi-2.07'
+make[1]: Warning: File `mk/rd_read-tiff.dep' has modification time 18 s in the future
+install -d /mnt/misc/rasberry/hack/fbi-2.07/debian/tmp/usr/bin
+install -d /mnt/misc/rasberry/hack/fbi-2.07/debian/tmp/usr/share/man/man1
+install exiftran /mnt/misc/rasberry/hack/fbi-2.07/debian/tmp/usr/bin
+install -m 644 ./exiftran.man /mnt/misc/rasberry/hack/fbi-2.07/debian/tmp/usr/share/man/man1/exiftran.1
+install fbi /mnt/misc/rasberry/hack/fbi-2.07/debian/tmp/usr/bin
+install fbgs /mnt/misc/rasberry/hack/fbi-2.07/debian/tmp/usr/bin
+install -m 644 ./fbi.man /mnt/misc/rasberry/hack/fbi-2.07/debian/tmp/usr/share/man/man1/fbi.1
+install -m 644 ./fbgs.man /mnt/misc/rasberry/hack/fbi-2.07/debian/tmp/usr/share/man/man1/fbgs.1
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: Leaving directory `/mnt/misc/rasberry/hack/fbi-2.07'
+dh_movefiles
+tar: usr/bin/fbgs: time stamp 2013-04-21 19:10:57 is 58.474845419 s in the future
+tar: usr/bin/fbgs: Cannot change ownership to uid 0, gid 0: Invalid argument
+tar: usr/bin/fbi: time stamp 2013-04-21 19:10:57 is 58.321015678 s in the future
+tar: usr/bin/fbi: Cannot change ownership to uid 0, gid 0: Invalid argument
+tar: usr/share/man/man1/fbgs.1: time stamp 2013-04-21 19:10:57 is 58.282117006 s in the future
+tar: usr/share/man/man1/fbgs.1: Cannot change ownership to uid 0, gid 0: Invalid argument
+tar: usr/share/man/man1/fbi.1: time stamp 2013-04-21 19:10:57 is 58.263728635 s in the future
+tar: usr/share/man/man1/fbi.1: Cannot change ownership to uid 0, gid 0: Invalid argument
+tar: Exiting with failure status due to previous errors
+dh_movefiles: (cd debian/tmp >/dev/null ; tar --create --files-from=/mnt/misc/rasberry/hack/fbi-2.07/debian/movelist --file -) | (cd debian/fbi >/dev/null ;tar xpf -) returned exit code 2
+make: *** [install] Error 2
+dpkg-buildpackage: error: fakeroot debian/rules binary gave error exit status 2
